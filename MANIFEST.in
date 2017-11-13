@@ -1,5 +1,8 @@
 # Include the license file
 include LICENSE.txt
+include tox.ini
+include cedict_utils/*
+include tests/*
 
 # Include the data files
 recursive-include data *

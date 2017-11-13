@@ -5,11 +5,12 @@ CedictParser and CedictEntry unit tests
 """
 
 import unittest
-from cedict import CedictEntry, CedictParser
+from cedict_utils.cedict import CedictParser, CedictEntry
 
 
 class TestCedictParser(unittest.TestCase):
-
+    """Main parser test case
+    """
     def test_remove_lines_with_comments(self):
         an_entry = 'K書 K书 [K shu1] /to cram (Taiwan,khè su 齧書, lit./ 啃書|啃书[ken3 shu1]/\n'
         lines = ['# CC-CEDICT\n', '# Community Chinese-English dictionary.\n',
@@ -80,6 +81,8 @@ class TestCedictParser(unittest.TestCase):
         self.assertTrue(type(entries[0]), CedictEntry)
 
 class TestCedictEntry(unittest.TestCase):
+    """CedictEntry test case
+    """
 
     def test_make_entry_from_cedict_line(self):
         line = 'K書 K书 [K shu1] /to cram (Taiwan,khè su 齧書, lit./ 啃書|啃书[ken3 shu1]/'

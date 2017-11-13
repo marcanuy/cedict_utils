@@ -1,5 +1,5 @@
 A Python parser for the CC-CEDICT Chinese-English dictionary
-=======================
+============================================================
 
 A sample project that exists as an aid to the `Python Packaging User Guide
 <https://packaging.python.org>`_'s `Tutorial on Packaging and Distributing
