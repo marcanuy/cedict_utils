@@ -3,6 +3,8 @@ include LICENSE.txt
 include tox.ini
 include cedict_utils/*
 include tests/*
+include requirements.txt
+include Makefile
 
 # Include the data files
 recursive-include data *
