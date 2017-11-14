@@ -7,9 +7,9 @@ python:
   - "3.6"
 
 # https://docs.travis-ci.com/user/languages/python/#Testing-Against-Multiple-Versions-of-Dependencies-(e.g.-Django-or-Flask)
-env:
-  - TOXENV=py35
-  - TOXENV=py36
+# env:
+#   - TOXENV=py35
+#   - TOXENV=py36
 
 install: pip install tox
 
