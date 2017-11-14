@@ -2,10 +2,14 @@
 # help confirm pull requests to this project.
 
 language: python
+python:
+  - "3.5"
+  - "3.6"
 
+# https://docs.travis-ci.com/user/languages/python/#Testing-Against-Multiple-Versions-of-Dependencies-(e.g.-Django-or-Flask)
 env:
-  - TOXENV=python3.5
-  - TOXENV=python3.6
+  - TOXENV=py35
+  - TOXENV=py36
 
 install: pip install tox
 
