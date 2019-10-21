@@ -20,7 +20,7 @@ Pygments==2.2.0
 pylint==1.7.4
 pytest==3.2.3
 readme-renderer==17.2
-requests==2.18.4
+requests==2.20.0
 requests-toolbelt==0.8.0
 six==1.11.0
 tox==2.9.1
