@@ -10,7 +10,7 @@ import logging
 
 
 class CedictParser:
-    """Parser class. Reads a cedict file and return a list of 
+    """Parser class. Reads a cedict file and return a list of
     CedictEntry instances with each line processed.
     """
 
@@ -19,22 +19,18 @@ class CedictParser:
                '_filter_new_lines',
                '_filter_empty_entries']
 
-    def __init__(self, **kwargs):
-
-        self.lines = kwargs.get('lines', [])
-        self.file_path = kwargs.get('file_path')
-        self.lines_count = kwargs.get('lines_count', None)
-        if kwargs.get('file_path'):
-            self.read_file()
-        else:
-            self.file_path = "data/cedict_ts.u8"
+    def __init__(self, lines=None, file_path='../data/cedict_ts.u8', lines_count=None):
+        self.lines = lines or []
+        self.lines_count = lines_count
+        self.file_path = file_path
 
     def read_file(self):
         """Import the cedict file sanitizing each entry
         """
-        __location__ = os.path.realpath(
-            os.path.join(os.getcwd(), os.path.dirname(__file__)))
-        with io.open(os.path.join(__location__, self.file_path), "r",
+        location = os.path.realpath(
+            os.path.join(os.getcwd(),
+                         os.path.dirname(__file__)))
+        with io.open(os.path.join(location, self.file_path), "r",
                      encoding='utf-8') as file_handler:
             if self.lines_count:
                 logging.info("Loaded %s lines of the dictionary", self.lines_count)
@@ -52,10 +48,10 @@ class CedictParser:
     def _filter_comments(self):
         """ remove lines starting with # or #! """
         self.lines = [line for line in self.lines
-                      if not line.startswith(("#", "#!"))]
+                      if not line.startswith(("#"))]
 
     def _filter_new_lines(self):
-        self.lines = [line.strip('\n') for line in self.lines]
+        self.lines = [line.rstrip('\n') for line in self.lines]
 
     def _filter_empty_entries(self):
         self.lines = [line for line in self.lines if line.strip()]
@@ -100,3 +96,6 @@ class CedictEntry: # pylint: disable=too-few-public-methods
             raw_line=line
         )
         return cls(**keywords)
+
+    def __str__(self):
+        return "{} ({}) - {}".format(self.simplified, self.traditional, self.pinyin)
