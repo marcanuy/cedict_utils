@@ -84,5 +84,18 @@ $ python
 Running tests
 
 ~~~
-make test
+$ make test
+pytest
+================================================================ test session starts ================================================================
+platform linux -- Python 3.6.8, pytest-3.2.3, py-1.4.34, pluggy-0.4.0
+rootdir: /Development/cedict-utils, inifile:
+collected 8 items                                                                                                                                    
+
+tests/test_cedict.py ........
+
+============================================================= 8 passed in 0.09 seconds ==============================================================
 ~~~
+
+# Resources
+
+- Cedict project https://www.mdbg.net/chinese/dictionary?page=cc-cedict
