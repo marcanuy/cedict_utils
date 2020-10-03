@@ -1,4 +1,4 @@
-.PHONY: freeze test clean dist
+.PHONY: freeze test clean dist format
 
 freeze:
 	pip freeze > requirements.txt
@@ -9,3 +9,5 @@ clean:
 dist:
 	python setup.py bdist_wheel
 	twine upload --skip-existing dist/*
+format:
+	black .
