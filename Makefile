@@ -7,7 +7,7 @@ test:
 clean:
 	rm -r .tox
 dist:
-	python setup.py bdist_wheel
+	python setup.py sdist bdist_wheel
 	twine upload --skip-existing dist/*
 format:
 	black .
