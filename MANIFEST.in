@@ -7,4 +7,4 @@ include requirements.txt
 include Makefile
 
 # Include the data files
-recursive-include data *
+recursive-include cedict_utils/data *

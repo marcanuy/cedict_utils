@@ -5,9 +5,17 @@ Parser class for cedict Chinese-English dictionary files
 """
 
 import os
+import os.path
 import io
 import logging
+import pickle
 
+from os import path
+
+BASE_PATH = path.abspath(path.dirname(__file__))
+DATA_DIR = os.path.join(BASE_PATH, "data")
+CEDICT_PATH = os.path.join(DATA_DIR, "cedict_ts.u8")
+DATA_PATH = os.path.join(DATA_DIR, "dump.dat")
 
 class CedictParser:
     """Parser class. Reads a cedict file and return a list of
@@ -16,23 +24,27 @@ class CedictParser:
 
     filters = ["_filter_comments", "_filter_new_lines", "_filter_empty_entries"]
 
-    def __init__(self, lines=None, file_path="../data/cedict_ts.u8", lines_count=None):
+    def __init__(self, lines=None, file_path=None, lines_count=None):
         self.lines = lines or []
         self.lines_count = lines_count
-        self.file_path = file_path
+        
+        if not file_path and os.path.isfile(DATA_PATH):
+            self.lines = pickle.load( open( DATA_PATH, "rb" ) )
+        elif file_path:
+            self.read_file(file_path)
+        else:
+            self.read_file(file_path=CEDICT_PATH)
 
-    def read_file(self):
+    def read_file(self, file_path):
         """Import the cedict file sanitizing each entry"""
-        location = os.path.realpath(
-            os.path.join(os.getcwd(), os.path.dirname(__file__))
-        )
         with io.open(
-            os.path.join(location, self.file_path), "r", encoding="utf-8"
+            file_path, "r", encoding="utf-8"
         ) as file_handler:
             if self.lines_count:
                 logging.info("Loaded %s lines of the dictionary", self.lines_count)
             self.lines = file_handler.readlines()
             self._sanitize()
+            pickle.dump( self.lines, open( DATA_PATH, "wb" ) )
 
     def _sanitize(self):
         from operator import methodcaller

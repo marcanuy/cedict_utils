@@ -18,41 +18,12 @@ https://pypi.org/project/cedict-utils/
 pip install cedict-utils
 ~~~
 
-## REPO
-
-1. Create virtualenv.
-
-~~~
-python3 -m venv ~/.virtualenvs/cedict-utils
-~~~
-
-2. Activate venv.
-
-~~~
-source ~/.virtualenvs/cedict-utils/bin/activate
-~~~
-
-3. Install requirements.
-   
-~~~
-pip install -r requirements.txt
-~~~
-
-# Dictionary
-
-Download dictionary
-
-~~~
-wget -O - https://www.mdbg.net/chinese/export/cedict/cedict_1_0_ts_utf-8_mdbg.txt.gz | gunzip > data/cedict_ts.u8
-~~~
-
 # Usage
 
 ~~~ python
 $ python
 >>> from cedict_utils.cedict import CedictParser
 >>> parser = CedictParser()
->>> parser.read_file()
 >>> entries = parser.parse()
 >>> for e in entries:
 ...     print(e)
@@ -73,6 +44,41 @@ $ python
 >>> entries[200].meanings
 ['variant of 敦[dun1]']
 >>> 
+~~~
+
+
+## REPO
+
+1. Create virtualenv.
+
+~~~
+python3 -m venv ~/.virtualenvs/cedict-utils
+~~~
+
+2. Activate venv.
+
+~~~
+source ~/.virtualenvs/cedict-utils/bin/activate
+~~~
+
+3. Install requirements.
+   
+~~~
+pip install -r requirements.txt
+~~~
+
+## Dictionary
+
+If you want to download a specific dictionary:
+
+~~~
+wget -O - https://www.mdbg.net/chinese/export/cedict/cedict_1_0_ts_utf-8_mdbg.txt.gz | gunzip > data/cedict_ts.u8
+~~~
+
+Then 
+
+~~~
+>>> parser.read_file()
 ~~~
 
 
