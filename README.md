@@ -2,6 +2,10 @@ A Python parser for the CC-CEDICT Chinese-English dictionary
 ============================================================
 
 [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)](https://travis-ci.org/marcanuy/cedict_utils)
+[![PyPI version](https://badge.fury.io/py/cedict-utils.svg)](https://badge.fury.io/py/cedict-utils)
+[![PyPI license](https://img.shields.io/pypi/l/ansicolortags.svg)](https://pypi.python.org/pypi/ansicolortags/)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Downloads](https://pepy.tech/badge/cedict-utils)](https://pepy.tech/project/cedict-utils)
 [![Pypi](https://img.shields.io/pypi/v/nine.svg)](https://pypi.python.org/pypi/cedict-utils/)
 
 ----
